@@ -110,6 +110,14 @@ Minimize tokens, scope, output.
 7. Keep reasoning internal. Output only what completes the task.
 ```
 
+### Optional: CLAUDE-ENGINEERING.md
+
+For repos where correctness matters more than token cost (production code, complex architecture), add a second file with behavioral rules derived from Andrej Karpathy's observations on LLM coding pitfalls.
+
+Reference it from CLAUDE.md with `@CLAUDE-ENGINEERING.md` or load both files at session start.
+
+See anthropic/CLAUDE-ENGINEERING.md for the full content.
+
 ### Codex
 
 Create an `AGENTS.md` file at the root of your repository and use the same philosophy.

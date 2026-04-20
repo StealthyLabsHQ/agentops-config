@@ -11,8 +11,16 @@ Minimize tokens, scope, output.
 5. No style-only edits, opportunistic cleanup, speculative abstractions.
 6. No new dependencies unless required.
 7. Keep reasoning internal. Output only what completes the task.
-8. Ambiguous task → safest minimal assumption + state it briefly.
+8. Ambiguous task → surface interpretations. Don't pick silently. Ask if blocking.
 9. Ignore: `node_modules/`, `dist/`, `build/`, `.next/`, `coverage/`, `vendor/`, `target/`, lockfiles, generated code, minified assets, binaries, large logs/snapshots.
+10. Match existing style even if you'd write it differently.
+11. Dead code or issues outside scope → mention, don't fix.
+
+## Before coding
+
+- Non-trivial task → state brief plan + verifiable success criteria.
+- Multiple valid interpretations → list them, pick one or ask.
+- Simpler approach available → say so before implementing.
 
 ## Response format
 
