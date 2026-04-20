@@ -46,16 +46,17 @@ This repository is intended for:
 ```text
 /anthropic/
   CLAUDE.md
+  CLAUDE-ENGINEERING.md
 
 /openai/
   AGENTS.md
 
 /google/
-  GEMINI.md
-
-/antigravity/
-  GEMINI.md
-  .agents/rules/minimal.md
+  gemini-cli/
+    GEMINI.md
+  antigravity/
+    GEMINI.md
+    .agents/rules/minimal.md
 
 /README.md
 ```
@@ -171,8 +172,8 @@ Gemini CLI notes:
 Antigravity supports both global and workspace-level customization.
 
 This repo includes:
-- a global rules example in `antigravity/GEMINI.md`
-- a workspace rules example in `antigravity/.agents/rules/minimal.md`
+- a global rules example in `google/antigravity/GEMINI.md`
+- a workspace rules example in `google/antigravity/.agents/rules/minimal.md`
 
 Recommended usage:
 - use `~/.gemini/GEMINI.md` for global rules shared across all Antigravity workspaces
