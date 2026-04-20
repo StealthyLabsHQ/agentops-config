@@ -1,6 +1,6 @@
 # agentops-config-toolkit
 
-Minimal configuration files for Claude Code, Codex, Gemini CLI, and Google Antigravity, optimized for lower token usage, tighter scope, and more consistent outputs.
+Minimal configuration files for Claude Code, Codex, Gemini CLI, Antigravity, Cursor, Windsurf, GitHub Copilot, Aider, Cline, Continue, Zed, JetBrains Junie, Kilo Code, and Amp — optimized for lower token usage, tighter scope, and more consistent outputs.
 
 ## Overview
 
@@ -12,11 +12,19 @@ The goal is simple:
 - avoid output drift
 - encourage minimal, reliable results
 
-This repo is especially useful if you work with:
+This repo is especially useful if you work with any agentic coding tool that reads project-level rule files — including:
 - `CLAUDE.md` for Claude Code
-- `AGENTS.md` for Codex
-- `GEMINI.md` for Gemini CLI
-- `GEMINI.md` and `.agents/rules/*.md` for Google Antigravity
+- `AGENTS.md` for Codex and Amp
+- `GEMINI.md` for Gemini CLI and Antigravity
+- `.cursor/rules/*.mdc` for Cursor
+- `.windsurf/rules/*.md` for Windsurf
+- `.github/copilot-instructions.md` for GitHub Copilot
+- `CONVENTIONS.md` for Aider
+- `.clinerules/*.md` for Cline / Roo Code
+- `.continue/rules/*.md` for Continue
+- `.rules` for Zed
+- `.junie/guidelines.md` for JetBrains Junie
+- `.kilocode/rules/*.md` for Kilo Code
 
 ## Why this repo exists
 
@@ -36,9 +44,9 @@ Instead of telling the model to do everything, these configs encourage it to:
 ## Who this is for
 
 This repository is intended for:
-- developers using Claude Code, Codex, Gemini CLI, or Google Antigravity in real projects
+- developers using any agentic coding tool (CLI, IDE-embedded, or cloud) in real projects
 - users who want longer sessions with lower token consumption
-- teams who want more consistent model behavior across repositories
+- teams who want more consistent model behavior across repositories and across tools
 - anyone who prefers short, practical, execution-focused outputs
 
 ## What is included
@@ -47,9 +55,11 @@ This repository is intended for:
 /anthropic/
   CLAUDE.md
   CLAUDE-ENGINEERING.md
+  README.md
 
 /openai/
   AGENTS.md
+  README.md
 
 /google/
   gemini-cli/
@@ -57,9 +67,71 @@ This repository is intended for:
   antigravity/
     GEMINI.md
     .agents/rules/minimal.md
+  README.md
+
+/cursor/
+  .cursor/rules/minimal.mdc
+  README.md
+
+/windsurf/
+  .windsurf/rules/minimal.md
+  README.md
+
+/github-copilot/
+  .github/copilot-instructions.md
+  README.md
+
+/aider/
+  CONVENTIONS.md
+  .aider.conf.yml
+  README.md
+
+/cline/
+  .clinerules/minimal.md
+  README.md
+
+/continue/
+  .continue/rules/minimal.md
+  README.md
+
+/zed/
+  .rules
+  README.md
+
+/jetbrains/
+  .junie/guidelines.md
+  README.md
+
+/kilocode/
+  .kilocode/rules/minimal.md
+  README.md
+
+/amp/
+  README.md
 
 /README.md
 ```
+
+### Supported tools
+
+Each vendor folder contains the native config file(s) plus a `README.md` with tool-specific usage notes.
+
+| Tool | Folder | Config file | Notes |
+|------|--------|-------------|-------|
+| Claude Code | [`anthropic/`](./anthropic/README.md) | `CLAUDE.md` (+ optional `CLAUDE-ENGINEERING.md`) | Hierarchical loading |
+| Codex | [`openai/`](./openai/README.md) | `AGENTS.md` | Portable convention |
+| Gemini CLI | [`google/`](./google/README.md) | `GEMINI.md` | Hierarchical loading |
+| Antigravity | [`google/`](./google/README.md) | `GEMINI.md` + `.agents/rules/*.md` | Global + workspace rules |
+| Cursor | [`cursor/`](./cursor/README.md) | `.cursor/rules/*.mdc` | MDC with frontmatter |
+| Windsurf | [`windsurf/`](./windsurf/README.md) | `.windsurf/rules/*.md` | Also supports legacy `.windsurfrules` |
+| GitHub Copilot | [`github-copilot/`](./github-copilot/README.md) | `.github/copilot-instructions.md` | Chat + coding agent |
+| Aider | [`aider/`](./aider/README.md) | `CONVENTIONS.md` + `.aider.conf.yml` | Auto-loaded via config |
+| Cline / Roo Code | [`cline/`](./cline/README.md) | `.clinerules/*.md` | VS Code extension |
+| Continue | [`continue/`](./continue/README.md) | `.continue/rules/*.md` | VS Code + JetBrains |
+| Zed | [`zed/`](./zed/README.md) | `.rules` | Reads many conventional filenames |
+| JetBrains Junie | [`jetbrains/`](./jetbrains/README.md) | `.junie/guidelines.md` | IntelliJ family + AI Assistant |
+| Kilo Code | [`kilocode/`](./kilocode/README.md) | `.kilocode/rules/*.md` | Fork of Roo Code |
+| Amp | [`amp/`](./amp/README.md) | reuses `AGENTS.md` | No dedicated file |
 
 ## Design principles
 
@@ -88,6 +160,8 @@ They can help with:
 - planning and decision support
 
 ## Quick start
+
+Detailed examples below cover Claude Code, Codex, Gemini CLI, and Antigravity. For all other tools (Cursor, Windsurf, GitHub Copilot, Aider, Cline, Continue, Zed, Junie, Kilo Code, Amp), see the per-vendor `README.md` linked in the [Supported tools](#supported-tools) table above — each one documents its config location, load order, and install command.
 
 ### Claude Code
 
