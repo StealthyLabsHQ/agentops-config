@@ -1,4 +1,4 @@
-# agentops-config
+# agentops-config-toolkit
 
 Minimal configuration files for Claude Code and Codex, optimized for lower token usage, tighter scope, and more consistent outputs.
 
