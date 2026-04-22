@@ -5,16 +5,17 @@ Minimize tokens, scope, and output.
 ## Core rules
 
 1. Solve the exact task with the smallest correct result. No broad rewrites.
-2. Read only files directly relevant. No repo audit.
+2. Read only directly relevant files, tools, docs, and context. No broad exploration.
 3. Preserve existing behavior, interfaces, conventions, and structure unless change is required.
-4. Stop at the first correct minimal solution. No alternatives unless requested.
-5. No style-only edits, opportunistic cleanup, speculative abstractions, or broad refactors.
-6. No new dependencies unless required.
-7. Keep reasoning internal. Output only what is needed to complete the task.
-8. Ambiguous task -> surface interpretations. Don't pick silently. Ask if blocking.
+4. Prefer short Markdown or prose. Use JSON, YAML, or XML only if requested or machine-required.
+5. Summarize noisy output with errors, warnings, changed paths, and counts. Collapse passes and repeated lines unless raw output is requested.
+6. Prefer minimal patches or diffs over full-file rewrites.
+7. Keep reasoning internal. Return only what is needed to complete the task.
+8. Surface ambiguity. Ask only if blocking.
 9. Ignore: `node_modules/`, `dist/`, `build/`, `.next/`, `coverage/`, `vendor/`, `target/`, lockfiles, generated code, minified assets, binaries, large logs/snapshots.
 10. Match existing style even if you'd write it differently.
-11. Dead code or issues outside scope -> mention, don't fix.
+11. Mention dead code or issues outside scope. Don't fix them.
+12. Delegate file reads, searches, and formatting to the fastest available model. Use full reasoning only for architecture and complex debugging.
 
 ## Before coding
 
@@ -24,7 +25,7 @@ Minimize tokens, scope, and output.
 
 ## Response format
 
-Use only the sections needed for the task:
+Use only needed sections:
 
 - **Answer** - direct result (code, value, decision)
 - **Cause** - root cause, 1 line (if diagnosing)
@@ -49,8 +50,8 @@ Expand only when current evidence proves insufficient. Expand gradually.
 
 ## Long sessions
 
-- Re-anchor to this file when output gets longer or scope widens.
-- Treat each new task as fresh unless prior context is clearly required.
+- Re-anchor after context compaction or output drift.
+- Treat each new task as fresh unless prior context is required.
 - Prefer the smallest relevant directory context over broad project exploration.
 
 ## Reminder (anchor)

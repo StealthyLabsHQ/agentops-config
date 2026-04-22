@@ -38,6 +38,9 @@ This repo provides compact instruction files that help counter those patterns.
 Instead of telling the model to do everything, these configs encourage it to:
 - solve the exact task
 - inspect only the minimum relevant context
+- prefer short Markdown or prose unless a machine format is required
+- collapse noisy logs to errors, warnings, changed paths, and counts
+- prefer minimal patches or diffs over full rewrites
 - stop at the first correct solution
 - avoid optional suggestions and unnecessary rewrites
 
@@ -140,10 +143,12 @@ All configs in this repo follow the same principles:
 1. Smallest correct result
 2. Minimum relevant scope
 3. No broad exploration by default
-4. No unnecessary refactors
-5. No long preambles or task restatements
-6. Short, structured outputs
-7. Strong bias toward the first correct minimal solution
+4. Prefer short Markdown or prose over rigid formats
+5. Summarize noisy output instead of pasting raw logs
+6. Prefer patches and diffs over full-file rewrites
+7. No unnecessary refactors
+8. No long preambles or task restatements
+9. Strong bias toward the first correct minimal solution
 
 ## Core use cases
 
@@ -177,12 +182,12 @@ Minimize tokens, scope, output.
 ## Rules
 
 1. Smallest correct change. No broad rewrites.
-2. Read only files directly relevant. No repo audit.
-3. Preserve existing APIs, behavior, conventions.
-4. Stop at first correct minimal solution. No alternatives.
-5. No style-only edits, opportunistic cleanup, speculative abstractions.
-6. No new dependencies unless required.
-7. Keep reasoning internal. Output only what completes the task.
+2. Read only directly relevant files, tools, docs, and context. No broad exploration.
+3. Preserve existing APIs, behavior, and conventions.
+4. Prefer short Markdown or prose. Use JSON, YAML, or XML only if requested or machine-required.
+5. Summarize noisy output with errors, warnings, changed paths, and counts. Collapse passes and repeated lines unless raw output is requested.
+6. Prefer minimal patches or diffs over full-file rewrites.
+7. Keep reasoning internal. Return only what completes the task.
 ```
 
 ### Optional: CLAUDE-ENGINEERING.md
@@ -207,10 +212,12 @@ Minimize tokens, scope, and output.
 ## Core rules
 
 1. Solve the exact task with the smallest correct result.
-2. Read only the minimum relevant context. No broad exploration.
+2. Read only directly relevant files, tools, docs, and context. No broad exploration.
 3. Preserve existing behavior, interfaces, conventions, and structure unless change is required.
-4. Stop at the first correct minimal solution. No alternatives unless requested.
-5. Keep reasoning internal. Output only what is needed to complete the task.
+4. Prefer short Markdown or prose. Use JSON, YAML, or XML only if requested or machine-required.
+5. Summarize noisy output with errors, warnings, changed paths, and counts. Collapse passes and repeated lines unless raw output is requested.
+6. Prefer minimal patches or diffs over full-file rewrites.
+7. Keep reasoning internal. Return only what is needed to complete the task.
 ```
 
 ### Gemini CLI
@@ -227,10 +234,12 @@ Minimize tokens, scope, and output.
 ## Core rules
 
 1. Solve the exact task with the smallest correct result.
-2. Read only files directly relevant. No repo audit.
+2. Read only directly relevant files, tools, docs, and context. No broad exploration.
 3. Preserve existing behavior, interfaces, conventions, and structure unless change is required.
-4. Stop at the first correct minimal solution. No alternatives unless requested.
-5. Keep reasoning internal. Output only what is needed to complete the task.
+4. Prefer short Markdown or prose. Use JSON, YAML, or XML only if requested or machine-required.
+5. Summarize noisy output with errors, warnings, changed paths, and counts. Collapse passes and repeated lines unless raw output is requested.
+6. Prefer minimal patches or diffs over full-file rewrites.
+7. Keep reasoning internal. Return only what is needed to complete the task.
 ```
 
 Gemini CLI notes:
@@ -259,8 +268,11 @@ Minimal workspace rule example:
 # Minimal Workspace Rule
 
 - Solve the exact task with the smallest correct result.
-- Read only directly relevant files. No broad repo exploration by default.
+- Read only directly relevant files, tools, docs, and context. No broad exploration.
 - Preserve existing behavior and structure unless change is required.
+- Prefer short Markdown or prose. Use JSON, YAML, or XML only if requested or machine-required.
+- Summarize noisy output with errors, warnings, changed paths, and counts. Collapse passes and repeated lines unless raw output is requested.
+- Prefer minimal patches or diffs over full-file rewrites.
 - Stop at the first correct minimal solution. No alternatives unless requested.
 - Avoid style-only edits, opportunistic cleanup, and broad refactors.
 - Keep output short, practical, and execution-focused.
